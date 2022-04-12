@@ -8,6 +8,10 @@ interface IProps {
     selected?: boolean
 }
 
+/**
+ * Una caja con posición absoluta que se puede ubicar en 
+ * cualquier posición y tiene una Ref de React incluida
+ */
 export default (props: IProps) => {
     return <div
         className={classNames(style.container, props.selected ? style.selected : null)}

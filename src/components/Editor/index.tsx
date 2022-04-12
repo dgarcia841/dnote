@@ -1,29 +1,14 @@
 import { Editor } from "@src/Editor";
-import ShapeCreate from "@src/Editor/ShapeCreate";
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useReducer, useRef } from "react"
 import Shape from "./Shape";
+
+const editor = Editor.get();
+
 export default () => {
+    const [, update] = useReducer(x => (x + 1) % 7, 0);
+    editor.setUpdater(update);
 
     const divRef = useRef<HTMLDivElement>(null);
-    const shapes: Editor.IAnyShape[] = [
-        ShapeCreate({
-            type: "rectangle",
-            shape: {
-                x: 32,
-                y: 64,
-                w: 128,
-                h: 64
-            }
-        }),
-        ShapeCreate({
-            type: "circle",
-            shape: {
-                x: 256,
-                y: 32,
-                r: 32
-            }
-        })
-    ];
 
     useEffect(() => {
         const div = divRef.current;
@@ -32,6 +17,6 @@ export default () => {
     }, []);
 
     return <div ref={divRef}>
-        {shapes.map((s, i) => <Shape key={i} shape={s} />)}
+        {editor.getShapes().map((s, i) => <Shape key={i} shape={s} />)}
     </div>;
 }

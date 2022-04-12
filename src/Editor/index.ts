@@ -1,3 +1,7 @@
+import { Editor as E } from "./Editor"
+import Two from "two.js"
+import { Shape } from "two.js/src/shape"
+import { IWrappedShape } from "./ShapeWrapper"
 /**
  * Declaraciones generales para el editor
  */
@@ -5,7 +9,7 @@ export namespace Editor {
     /**
      * Una figura editable
      */
-    export interface IShape { 
+    export interface IShape {
         x: number,
         y: number
     }
@@ -28,8 +32,19 @@ export namespace Editor {
     /**
      * Contenedor de una figura y su tipo
      */
-    export interface IAnyShape<Type extends IShapeTypes = IShapeTypes> { 
+    export interface IAnyShape<Type extends IShapeTypes = IShapeTypes> {
         shape: IShapes[Type],
         type: Type
     }
+
+    /**
+     * Función que renderiza una figura
+     */
+    export type IShapeRenderer<S extends Editor.IShape> = (shape: S, two: Two, update: () => void) => {
+        x: number,
+        y: number,
+        shape: IWrappedShape<Shape>
+    };
 }
+
+export class Editor extends E { };

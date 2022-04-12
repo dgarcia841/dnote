@@ -1,6 +1,6 @@
 import { Shape } from "two.js/src/shape"
 
-type IWrappedShape<S extends Shape> = {
+export type IWrappedShape<S extends Shape> = {
     _renderer: { elem: SVGElement }
 } & Omit<S, "_renderer">;
 
