@@ -31,8 +31,21 @@ export class Editor {
         })
     ];
     private updater?: () => void;
-    protected constructor() { };
 
+    private mouse: [x: number, y: number];
+
+    protected constructor() { 
+        window.addEventListener("mousemove", ev => {
+            this.mouse = [
+                ev.clientX,
+                ev.clientY
+            ];
+        });
+    };
+    
+    public getMouse(): [x: number, y: number] {
+        return [...this.mouse];
+    }
     public getShapes() {
         return Object.freeze([...this.shapes]);
     }

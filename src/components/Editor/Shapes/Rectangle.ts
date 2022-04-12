@@ -8,6 +8,7 @@ export const Rectangle: Editor.IShapeRenderer<Editor.IShapes["rectangle"]> = (sh
     two.width = shape.w + 2;
     two.height = shape.h + 2;
     const rect = ShapeWrapper(two.makeRectangle(shape.w / 2 + 1, shape.h / 2 + 1, shape.w, shape.h));
+    rect.fill = "gray";
     two.update();
 
     return {
