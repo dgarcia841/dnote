@@ -1,7 +1,7 @@
-import { Drawer, Box, Typography } from "@mui/material"
-import SettingsIcon from '@mui/icons-material/Settings';
+import { Box, Drawer } from "@mui/material"
 import React from "react"
-import ToolbarBox from "./ToolbarBox";
+import Inspector from "./Inspector";
+import Properties from "./Properties";
 
 export default () => {
     return <Drawer
@@ -12,13 +12,10 @@ export default () => {
         open={true}
         anchor="right"
     >
-
-        <Box m={1} mb={0} flexDirection="row" justifyContent="space-between" alignItems="center" display="flex">
-            <Typography variant="h4">
-                Propiedades
-            </Typography>
-            <SettingsIcon />
+        <Box height="100%" display="flex" flexDirection="column" justifyContent="space-between">
+            <Properties />
+            <div />
+            <Inspector /> 
         </Box>
-        <ToolbarBox />
     </Drawer>
 }

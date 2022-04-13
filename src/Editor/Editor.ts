@@ -90,6 +90,16 @@ export class Editor {
     public getShapes() {
         return this.shapes;
     }
+    /**
+     * Mapea la lista de figuras en reversa
+     */
+    public mapShapesReverse<T>(ev: (shape: E.IAnyShape) => T): T[] {
+        const result: T[] = [];
+        for (let i = this.shapes.length - 1; i >= 0; i--) {
+            result.push(ev(this.shapes[i]));
+        }
+        return result;
+    }
 
     /**
      * Obtener la figura seleccionada
