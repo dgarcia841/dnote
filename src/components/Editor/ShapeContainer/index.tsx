@@ -18,7 +18,7 @@ export default (props: IProps) => {
     const selectedRef = useRef<HTMLDivElement>(null);
 
     useMemo(() => {
-        if (selectedRef.current &&props.selected && props.element) {
+        if (selectedRef.current && props.selected && props.element) {
             const sel = selectedRef.current;
             const svg = props.element.getElementsByTagName("svg")[0];
             const update = function update() {
@@ -39,9 +39,10 @@ export default (props: IProps) => {
 
     return <React.Fragment>
         <div
-        className={style.container}
-        style={{ left: props.x, top: props.y }}
+            className={style.container}
+            style={{ left: props.x, top: props.y }}
             ref={props.innerRef} />
+        
         {props.selected ? <div
             ref={selectedRef}
             className={classNames(style.container, style.selected)} /> : null}
