@@ -13,7 +13,7 @@ export default () => {
         anchor="right"
     >
 
-        <Box m={1}>
+        <Box m={1} mb={0}>
             <Typography variant="h4">
                 <SettingsIcon />
                 Propiedades
