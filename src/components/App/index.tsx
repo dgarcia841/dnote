@@ -1,11 +1,20 @@
-import { CssBaseline } from "@mui/material"
+import { ThemeProvider } from "@emotion/react";
+import { createTheme, CssBaseline } from "@mui/material"
 import React from "react"
 import Editor from "../Editor"
 import "./style.module.css";
 
 export default () => {
-    return <React.Fragment>
+
+    const theme = createTheme({
+        palette: {
+            mode: "dark"
+        }
+    });
+
+
+    return <ThemeProvider theme={theme}>
         <CssBaseline />
         <Editor />
-    </React.Fragment>
+    </ThemeProvider>
 }

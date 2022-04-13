@@ -1,5 +1,5 @@
 body {
-    background-image: url(@assets/transparency.png);
+    background-image: url(@assets/transparency-dark.png);
     background-repeat: repeat;
     background-position: center;
     background-size: inherit;
