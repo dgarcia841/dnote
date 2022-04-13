@@ -51,7 +51,17 @@ export class Editor {
     /**
      * Coordenadas del cursor
      */
-    private mouse: [x: number, y: number];
+    private mouse: [x: number, y: number] = [0, 0];
+
+    private eventListeners: {
+        event: keyof WindowEventMap,
+        callback: (ev: WindowEventMap[keyof WindowEventMap]) => void
+    }[] = [];
+
+    private events: {
+        event: keyof WindowEventMap,
+        callback: (ev: any) => void
+    }[] = [];
 
     protected constructor() { 
         window.addEventListener("mousemove", ev => {
@@ -102,5 +112,37 @@ export class Editor {
                 console.log("owo");
             }
         };
+    }
+
+
+    /**
+     * Añade un evento "onmousedown" global (en window) de un solo uso.
+     * Es decir, una vez activado el evento, se elimina el listener.
+     */
+    public addDisposableEvent<Ev extends keyof WindowEventMap>(event: Ev, callback: (ev: WindowEventMap[Ev]) => void) {
+        // Buscar el lístener que activa los eventos
+        let listener = this.eventListeners.find(x => x.event == event);
+        // Si no existe, crearlo
+        if (!listener) {
+            listener = {
+                event,
+                callback: (ev) => {
+                    const events = this.events.filter(x => x.event == event);
+                    events.forEach(x => {
+                        const index = this.events.indexOf(x);
+                        if (index == -1) return;
+                        x.callback(ev);
+                        this.events.splice(index, 1);
+                    });
+                }
+            }
+            window.addEventListener(event, listener.callback);
+            this.eventListeners.push(listener);
+        }
+
+        this.events.push({
+            event,
+            callback
+        });
     }
 }

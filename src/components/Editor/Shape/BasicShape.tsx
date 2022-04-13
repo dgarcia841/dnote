@@ -81,10 +81,18 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
                     ]);
                     setMoving(true);
                 }
-                // Al soltar el mouse, detener arrastre
-                window.addEventListener("mouseup", () => setMoving(false));
         
             }, [two, shape, __]);
+
+            useEffect(() => {
+                if (moving) {
+                    // Al soltar el mouse, detener arrastre
+                    Editor.get().addDisposableEvent("mouseup", () => {
+                        setMoving(false);
+                        Editor.get().update();
+                    });
+                }
+            }, [moving]);
 
             return <ShapeContainer selected={true} x={x} y={y} innerRef={ref} />;
         };
