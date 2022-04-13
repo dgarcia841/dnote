@@ -15,6 +15,20 @@ export const Rectangle: Editor.IShapeRenderer<Editor.IShapes["rectangle"]> = (sh
     return {
         x: shape.x,
         y: shape.y,
-        shape: rect
+        shape: rect,
+        onMouseMoving: () => {
+            const [mouseX, mouseY] = Editor.get().getMouse();
+
+            shape.w = Math.max(0, mouseX - shape.x);
+            shape.h = Math.max(0, mouseY - shape.y);
+
+            rect.position.x = shape.w / 2 + 1;
+            rect.position.y = shape.h / 2 + 1;
+            rect.width = shape.w;
+            rect.height = shape.h;
+            two.width = shape.w + 2;
+            two.height = shape.h + 2;
+            two.update();
+        }
     }
 }

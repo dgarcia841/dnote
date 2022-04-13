@@ -39,6 +39,12 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
             // ¿La figura se está moviendo o no?
             const [moving, setMoving] = useState(false);
 
+            const [dragFunction, setDragFunction] = useState<undefined | {
+                onMouseMoving?: () => void,
+                afterMouseMoving?: () => void
+            }>({ onMouseMoving: () => 0 });
+            const [dragging, setDragging] = useState(false);
+
             // Movimiento de la figura con el mouse
             const move = useMemo(() => () => {
                 if (!ref.current) return;
@@ -64,8 +70,11 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
             useEffect(() => {
                 if (!two || !ref.current) return;
                 const div = ref.current;
-                const {x, y, shape: s } = control(shape, two, update);
+                const {x, y, shape: s, onMouseMoving, afterMouseMoving } = control(shape, two, update);
                 setX(x); setY(y);
+
+                if(onMouseMoving)
+                    setDragFunction({onMouseMoving, afterMouseMoving});
 
                 // Una vez renderizado el SVG, añadir evento click para iniciar arrastre
                 s._renderer.elem.onmousedown = () => {
@@ -82,8 +91,33 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
                     Editor.get().select(this.props.shape);
                     setMoving(true);
                 }
+
+                // Al pulsar control, iniciar redimensionado de la figura con el mouse
+                Editor.get().addDisposableEvent("keydown", ev => {
+                    if (Editor.get().isSelected(shape) && ev.key == 'Control') {
+                        setDragging(true);
+                    }
+                });
         
             }, [two, shape, __]);
+
+            useEffect(() => {
+
+                if (dragging) {
+                    if(dragFunction?.onMouseMoving)
+                        window.addEventListener("mousemove", dragFunction.onMouseMoving);
+                    Editor.get().addDisposableEvent("keyup", ev => {
+                        if (ev.key == 'Control') {
+                            if(dragFunction?.onMouseMoving)
+                                window.removeEventListener("mousemove", dragFunction.onMouseMoving);
+                            dragFunction?.afterMouseMoving?.();
+                            setDragging(false);
+                            Editor.get().update();
+                        }
+                    });
+                }
+
+            }, [dragging, dragFunction]);
 
             useEffect(() => {
                 if (moving) {

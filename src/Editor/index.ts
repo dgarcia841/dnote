@@ -55,7 +55,9 @@ export namespace Editor {
     export type IShapeRenderer<S extends Editor.IShape> = (shape: S, two: Two, update: () => void) => {
         x: number,
         y: number,
-        shape: IWrappedShape<Shape>
+        shape: IWrappedShape<Shape>,
+        onMouseMoving?: () => void,
+        afterMouseMoving?: () => void
     };
 }
 
