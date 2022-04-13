@@ -13,11 +13,11 @@ export default () => {
         anchor="right"
     >
 
-        <Box m={1} mb={0}>
+        <Box m={1} mb={0} flexDirection="row" justifyContent="space-between" alignItems="center" display="flex">
             <Typography variant="h4">
-                <SettingsIcon />
                 Propiedades
             </Typography>
+            <SettingsIcon />
         </Box>
         <ToolbarBox />
     </Drawer>
