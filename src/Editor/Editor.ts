@@ -43,6 +43,8 @@ export class Editor {
             }
         })
     ];
+
+    private selected?: E.IAnyShape = undefined;
     /**
      * Función a llamar cuando es necesaria una actualización completa
      */
@@ -83,6 +85,23 @@ export class Editor {
      */
     public getShapes() {
         return Object.freeze([...this.shapes]);
+    }
+
+    /**
+     * Obtener la figura seleccionada
+     */
+    public getSelected() {
+        return this.selected;
+    }
+
+    /**
+     * Selecciona una figura
+     */
+    public select(shape: E.IShape) {
+        const find = this.shapes.find(x => x.shape == shape);
+        if (!find) return false;
+        this.selected = find;
+        return true;
     }
     /**
      * Llamar actualización completa

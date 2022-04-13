@@ -1,22 +1,24 @@
-import { Drawer, List, ListItem, ListItemText } from "@mui/material"
-import { Editor } from "@src/Editor"
+import { Drawer, Box, Typography } from "@mui/material"
+import SettingsIcon from '@mui/icons-material/Settings';
 import React from "react"
+import ToolbarBox from "./ToolbarBox";
 
 export default () => {
     return <Drawer
         PaperProps={{
-        sx: { width: "320px" },
+            sx: { width: "320px" },
         }}
         variant="persistent"
         open={true}
         anchor="right"
     >
-        <List>
-            {Editor.get().getShapes().map((item, i) => <ListItem key={i}>
-                <ListItemText>
-                    {item.type}: {item.shape.x}, {item.shape.y}
-                </ListItemText>
-            </ListItem>)}
-        </List>
+
+        <Box m={1}>
+            <Typography variant="h4">
+                <SettingsIcon />
+                Propiedades
+            </Typography>
+        </Box>
+        <ToolbarBox />
     </Drawer>
 }

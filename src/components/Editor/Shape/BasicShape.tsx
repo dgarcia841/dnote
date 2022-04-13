@@ -79,6 +79,7 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
                         mouseX - shape.x,
                         mouseY - shape.y
                     ]);
+                    Editor.get().select(this.props.shape);
                     setMoving(true);
                 }
         
