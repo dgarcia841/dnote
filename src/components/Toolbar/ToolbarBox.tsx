@@ -1,7 +1,7 @@
 import { Box, Chip, Grid } from "@mui/material"
 import { Editor } from "@src/Editor";
 import React from "react"
-import Basic from "./Properties/Basic";
+import Properties from "./Properties";
 
 export default () => {
     const selected = Editor.get().getSelected();
@@ -14,7 +14,7 @@ export default () => {
 
         <Box m={1}>
             <Grid container spacing={1}>
-                <Basic shape={selected.shape} />
+                <Properties shape={selected} />
             </Grid>
         </Box>
     </React.Fragment>

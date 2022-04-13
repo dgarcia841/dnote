@@ -30,10 +30,10 @@ export class Editor {
             shape: {
                 x: 32,
                 y: 64,
+                stroke: "#FF0000",
+                fill: "#FFEEEE",
                 w: 128,
                 h: 64,
-                stroke: "#FF0000",
-                fill: "#FFEEEE"
             }
         }),
         ShapeCreate({
@@ -41,9 +41,9 @@ export class Editor {
             shape: {
                 x: 64,
                 y: 64,
-                r: 64,
                 stroke: "#0000FF",
-                fill: "#EEEEFF"
+                fill: "#EEEEFF",
+                r: 64,
             }
         })
     ];
@@ -88,7 +88,7 @@ export class Editor {
      * Obtener lista de figuras en el editor
      */
     public getShapes() {
-        return Object.freeze([...this.shapes]);
+        return this.shapes;
     }
 
     /**

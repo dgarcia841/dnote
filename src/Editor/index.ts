@@ -28,6 +28,16 @@ export namespace Editor {
         }
     }
     /**
+     * Propiedades disponibles en todas las figuras
+     */
+    export type IShapePropertyObject = {
+        [s in keyof IShapes]: keyof IShapes[s]
+    }
+    /**
+     * Propiedades disponibles en todas las figuras
+     */
+    export type IShapeProperties = IShapePropertyObject[keyof IShapePropertyObject];
+    /**
      * Nombre de las figuras editables particulares
      */
     export type IShapeTypes = keyof IShapes;
