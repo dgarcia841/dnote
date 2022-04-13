@@ -6,5 +6,20 @@
     pointer-events: auto;
 }
 .selected {
-    border: 2px dashed rgb(0, 110, 255);
+    z-index: 1000;
+    background: linear-gradient(90deg, black 50%, transparent 50%), 
+                linear-gradient(90deg, black 50%, transparent 50%), 
+                linear-gradient(0deg, black 50%, transparent 50%), 
+                linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
+    background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    animation: dash 5s linear infinite;
+}
+@keyframes dash {
+    to {
+        background-position: 100% 0%, 0% 100%, 0% 0%, 100% 100%;
+    }
 }
