@@ -4,7 +4,6 @@ import React from "react";
 import Basic from "./Basic";
 import Circle from "./Circle";
 import Rectangle from "./Rectangle";
-import SettingsIcon from '@mui/icons-material/Settings';
 
 export default () => {
 
@@ -16,7 +15,6 @@ export default () => {
             <Typography variant="h4">
                 Propiedades
             </Typography>
-            <SettingsIcon />
         </Box>
         <Box m={1}>
             <Chip variant="outlined" label={selected.type} />
