@@ -1,3 +1,4 @@
+import { Box } from "@mui/material";
 import { Editor } from "@src/Editor";
 import React, { useReducer } from "react"
 import Toolbar from "../Toolbar";
@@ -10,9 +11,15 @@ export default () => {
     editor.setUpdater(update);
 
     return <React.Fragment>
-        <div>
-            {editor.getShapes().map((s, i) => <Shape key={i} shape={s} />)}
-        </div>
+        <Box
+            position="absolute"
+            width="100%"
+            height="100%" onClick={() => {
+                Editor.get().unselect();
+                Editor.get().update();
+            }}>
+            {editor.mapShapesReverse((s, i) => <Shape key={i} shape={s} />)}
+        </Box>
         <Toolbar />
     </React.Fragment>
 }

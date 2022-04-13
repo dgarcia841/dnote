@@ -90,13 +90,54 @@ export class Editor {
     public getShapes() {
         return this.shapes;
     }
+
+    /**
+     * Mover figura seleccionada hacia arriba
+     */
+     public moveUp() {
+        if (!this.selected) return;
+        const index = this.shapes.indexOf(this.selected);
+        if (index <= 0) return;
+
+        const prev = this.shapes[index - 1];
+        this.shapes[index - 1] = this.selected;
+        this.shapes[index] = prev;
+    }
+    /**
+     * Mover figura seleccionada hacia abajo
+     */
+    public moveDown() {
+        if (!this.selected) return;
+        const index = this.shapes.indexOf(this.selected);
+        if (index == -1 || index >= this.shapes.length - 1) return;
+
+        const prev = this.shapes[index + 1];
+        this.shapes[index + 1] = this.selected;
+        this.shapes[index] = prev;
+    }
+    /**
+     * Comprueba si la figura seleccionada es la primera en lista
+     */
+    public isFirst() {
+        if (!this.selected) return false;
+        const index = this.shapes.indexOf(this.selected);
+        return index == 0;
+    }
+    /**
+     * Comprueba si la figura seleccionada es la última en lista
+     */
+    public isLast() {
+        if (!this.selected) return false;
+        const index = this.shapes.indexOf(this.selected);
+        return index == this.shapes.length - 1;
+    }
     /**
      * Mapea la lista de figuras en reversa
      */
-    public mapShapesReverse<T>(ev: (shape: E.IAnyShape) => T): T[] {
+    public mapShapesReverse<T>(ev: (shape: E.IAnyShape, index: number) => T): T[] {
         const result: T[] = [];
         for (let i = this.shapes.length - 1; i >= 0; i--) {
-            result.push(ev(this.shapes[i]));
+            result.push(ev(this.shapes[i], i));
         }
         return result;
     }
@@ -123,6 +164,13 @@ export class Editor {
         if (!find) return false;
         this.selected = find;
         return true;
+    }
+
+    /**
+     * Deselecciona la figura 
+     */
+    public unselect() {
+        this.selected = undefined;
     }
     /**
      * Llamar actualización completa
