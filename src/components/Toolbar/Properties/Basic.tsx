@@ -40,13 +40,19 @@ export default ({ shape }: { shape: Editor.IShape }) => {
             <TextField
                 onChange={ev => updateProperty("fill", ev.target.value)}
                 value={shape.fill}
-                label="fill" />
+                label="fill"
+                type="color"
+                sx={{width:"100%"}}
+            />
         </Grid>
         <Grid item xs={6}>
             <TextField
                 onChange={ev => updateProperty("stroke", ev.target.value)}
                 value={shape.stroke}
-                label="stroke" />
+                label="stroke"
+                type="color"
+                sx={{width:"100%"}}
+            />
         </Grid>
     </React.Fragment>
 }
