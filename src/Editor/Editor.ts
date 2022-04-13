@@ -31,7 +31,9 @@ export class Editor {
                 x: 32,
                 y: 64,
                 w: 128,
-                h: 64
+                h: 64,
+                stroke: "#FF0000",
+                fill: "#FFEEEE"
             }
         }),
         ShapeCreate({
@@ -39,7 +41,9 @@ export class Editor {
             shape: {
                 x: 64,
                 y: 64,
-                r: 64
+                r: 64,
+                stroke: "#0000FF",
+                fill: "#EEEEFF"
             }
         })
     ];

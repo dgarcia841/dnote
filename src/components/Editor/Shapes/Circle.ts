@@ -7,8 +7,8 @@ export const  Circle: Editor.IShapeRenderer<Editor.IShapes["circle"]> = (shape, 
     two.width = shape.r * 2 + 2;
     two.height = shape.r * 2 + 2;
     const c = ShapeWrapper(two.makeCircle(shape.r + 1, shape.r + 1, shape.r));
-    c.stroke = "red";
-    c.fill = "orange";
+    c.stroke = shape.stroke;
+    c.fill = shape.fill;
     two.update();
 
     return {

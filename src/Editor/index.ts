@@ -11,7 +11,9 @@ export namespace Editor {
      */
     export interface IShape {
         x: number,
-        y: number
+        y: number,
+        stroke: string,
+        fill: string
     }
     /**
      * Figuras editables particulares
