@@ -172,6 +172,16 @@ export class Editor {
     public unselect() {
         this.selected = undefined;
     }
+
+    /**
+     * Borra una figura
+     */
+    public delete(shape: E.IAnyShape) {
+        const index = this.shapes.indexOf(shape);
+        if (index == -1) return false;
+        this.shapes.splice(index, 1);
+        return true;
+    }
     /**
      * Llamar actualización completa
      */

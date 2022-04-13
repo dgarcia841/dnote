@@ -1,4 +1,4 @@
-import { List, Box, Typography, IconButton, Tooltip } from "@mui/material"
+import { List, Box, Typography, IconButton, Tooltip, Divider } from "@mui/material"
 import { Editor } from "@src/Editor"
 import React from "react"
 import ShapeIndex from "./ShapeIndex";
@@ -7,7 +7,7 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 
 export default () => {
     return <Box bottom={0} height="50%">
-        <Box m={1} mb={0} flexDirection="row" justifyContent="space-between" alignItems="center" display="flex">
+        <Box m={1} flexDirection="row" justifyContent="space-between" alignItems="center" display="flex">
             <Typography variant="h4">
                 Inspector
             </Typography>
@@ -34,6 +34,8 @@ export default () => {
                 </Tooltip>
             </Box>
         </Box>
+
+        <Divider />
 
         <Box m={1}>
             <List>

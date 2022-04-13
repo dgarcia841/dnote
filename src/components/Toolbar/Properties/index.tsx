@@ -1,4 +1,4 @@
-import { Box, Chip, Grid, Typography } from "@mui/material";
+import { Box, Chip, Divider, Grid, Typography } from "@mui/material";
 import { Editor } from "@src/Editor";
 import React from "react";
 import Basic from "./Basic";
@@ -11,11 +11,12 @@ export default () => {
     if (!selected) return null;
     return <Box>
 
-        <Box m={1} mb={0} flexDirection="row" justifyContent="space-between" alignItems="center" display="flex">
+        <Box m={1} flexDirection="row" justifyContent="space-between" alignItems="center" display="flex">
             <Typography variant="h4">
                 Propiedades
             </Typography>
         </Box>
+        <Divider />
         <Box m={1}>
             <Chip variant="outlined" label={selected.type} />
         </Box>
