@@ -99,20 +99,6 @@ export class Editor {
             this.updater = updater;
         }
     }
-    /**
-     * Genera un objeto que permite actualizar una o más propiedades de una figura en concreto
-     * @param shape La figura a actualizar
-     * @returns Un objeto con método `values()`
-     */
-    public set<Type extends E.IShape>(shape: Type) {
-        type IProps = { [k in keyof Type]?: Type[k] };
-        return {
-            values(props: IProps) {
-                shape; props;
-                console.log("owo");
-            }
-        };
-    }
 
 
     /**
