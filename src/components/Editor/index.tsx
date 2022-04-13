@@ -12,7 +12,7 @@ export default () => {
     return <React.Fragment>
         <div>
             {editor.getShapes().map((s, i) => <Shape key={i} shape={s} />)}
-        </div>;
+        </div>
         <Toolbar />
     </React.Fragment>
 }
