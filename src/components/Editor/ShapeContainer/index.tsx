@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+import React, { useMemo, useRef } from "react";
 import style from "./style.module.css";
 interface IProps {
     x: number,
@@ -15,27 +15,35 @@ interface IProps {
  */
 export default (props: IProps) => {
 
-    let selected = false;
-    let w = 0, h = 0;
-    if (props.selected && props.element) {
+    const selectedRef = useRef<HTMLDivElement>(null);
 
-        const svg = props.element.getElementsByTagName("svg")[0];
-        if (svg) {
-            selected = true;
-            const rect = svg.getBoundingClientRect();
-            w = rect.width;
-            h = rect.height;
+    useMemo(() => {
+        if (selectedRef.current &&props.selected && props.element) {
+            const sel = selectedRef.current;
+            const svg = props.element.getElementsByTagName("svg")[0];
+            const update = function update() {
+                const rect = svg.getBoundingClientRect();
+                sel.style.left = rect.left + "px";
+                sel.style.top = rect.top + "px";
+                sel.style.width = rect.width + "px";
+                sel.style.height = rect.height + "px";
+            }
+            const obs = new MutationObserver(() => {
+                update();
+            });
+
+            obs.observe(svg, { attributes: true });
+            obs.observe(props.element, { attributes: true });
         }
-
-    }
+    }, [props]);
 
     return <React.Fragment>
         <div
         className={style.container}
         style={{ left: props.x, top: props.y }}
             ref={props.innerRef} />
-        {selected ? <div
-            style={{ left: props.x, top: props.y, width: w, height: h }}
+        {props.selected ? <div
+            ref={selectedRef}
             className={classNames(style.container, style.selected)} /> : null}
     </React.Fragment>
 }
