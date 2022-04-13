@@ -6,5 +6,5 @@
     pointer-events: auto;
 }
 .selected {
-    border: 1px dashed rgb(41, 128, 187);
+    border: 2px dashed rgb(0, 110, 255);
 }
