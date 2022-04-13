@@ -1,4 +1,10 @@
 .container {
     position: absolute;
+    pointer-events: none;
 }
-.selected {}
+.container path {
+    pointer-events: auto;
+}
+.selected {
+    border: 1px dashed black;
+}

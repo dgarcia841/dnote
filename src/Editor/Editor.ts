@@ -99,6 +99,13 @@ export class Editor {
     }
 
     /**
+     * Comprueba si la figura proporcionada está seleccionada
+     */
+    public isSelected(shape: E.IShape) {
+        return this.selected?.shape == shape;
+    }
+
+    /**
      * Selecciona una figura
      */
     public select(shape: E.IShape) {

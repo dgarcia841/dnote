@@ -95,7 +95,7 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
                 }
             }, [moving]);
 
-            return <ShapeContainer selected={true} x={x} y={y} innerRef={ref} />;
+            return <ShapeContainer selected={Editor.get().isSelected(this.props.shape)} x={x} y={y} innerRef={ref} />;
         };
 
         return <Component shape={this.props.shape} control={this.props.control} />;
