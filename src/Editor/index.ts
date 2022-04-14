@@ -31,6 +31,7 @@ export namespace Editor {
             w: number,
             fontSize: number,
             fontColor: string,
+            textAlign: string,
             text: string
         }
     }

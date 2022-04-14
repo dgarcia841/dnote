@@ -1,0 +1,4 @@
+.Text p, .Text h1, .Text h2, .Text h3, .Text h4, .Text h5, .Text h6 {
+    margin: 0;
+    padding: 0;
+}

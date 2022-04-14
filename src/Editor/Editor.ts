@@ -57,6 +57,7 @@ export class Editor {
                 w: 128,
                 fontSize: 13,
                 fontColor: "black",
+                textAlign: "left",
                 text: "hola probando sonido uwu ".repeat(32)
             }
         })
