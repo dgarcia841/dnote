@@ -1,5 +1,4 @@
 import { Editor as E } from "."
-import ShapeCreate from "./ShapeCreate";
 
 
 /**
@@ -25,42 +24,42 @@ export class Editor {
      * Lista de figuras en el espacio de trabajo
      */
     private shapes: E.IAnyShape[] = [
-        ShapeCreate({
-            type: "rectangle",
-            shape: {
-                x: 32,
-                y: 64,
-                stroke: "#FF0000",
-                fill: "#FFEEEE",
-                w: 128,
-                h: 64,
+        {
+            "type": "text",
+            "shape": {
+                "x": 552,
+                "y": 161,
+                "stroke": "rgba(0, 0, 0, 0.47)",
+                "fill": "rgba(255, 255, 255, 0.3)",
+                "w": 398,
+                "fontSize": 13,
+                "fontColor": "black",
+                "textAlign": "justify",
+                "text": "## Texto de ejemplo\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed aliquam tellus. Duis quis sodales eros. Sed elementum tellus id augue dignissim viverra. Vestibulum eget augue bibendum, laoreet augue ac, consectetur nisi. In tempus, quam in dictum scelerisque, massa massa volutpat dolor, vitae cursus ligula mauris at felis. Suspendisse fermentum quis lectus a vestibulum. Integer sagittis vitae quam vel pretium. Vivamus magna lectus, porta id cursus nec, laoreet vestibulum enim. Donec suscipit leo et tellus vestibulum, sit amet accumsan est scelerisque. Maecenas interdum elementum pharetra. Aenean ultrices eget enim non facilisis. Pellentesque porta dictum orci a commodo. Mauris tincidunt ornare blandit. Ut nec metus pharetra, placerat metus quis, auctor leo. Nulla et cursus sapien. Aenean nisi dui, accumsan id ultrices sed, dictum et augue."
             }
-        }),
-        ShapeCreate({
-            type: "ellipse",
-            shape: {
-                x: 64,
-                y: 64,
-                stroke: "#0000FF",
-                fill: "#EEEEFF",
-                rx: 64,
-                ry: 64
+        },
+        {
+            "type": "ellipse",
+            "shape": {
+                "x": 932,
+                "y": 441,
+                "stroke": "#0000FF",
+                "fill": "rgba(53, 154, 215, 1)",
+                "rx": 86,
+                "ry": 87
             }
-        }),
-        ShapeCreate({
-            type: "text",
-            shape: {
-                x: 256,
-                y: 64,
-                stroke: "#FF00FF",
-                fill: "#00ff00",
-                w: 128,
-                fontSize: 13,
-                fontColor: "black",
-                textAlign: "left",
-                text: "hola probando sonido uwu ".repeat(32)
+        },
+        {
+            "type": "rectangle",
+            "shape": {
+                "x": 511,
+                "y": 143,
+                "stroke": "rgba(71, 155, 236, 1)",
+                "fill": "rgba(134, 205, 244, 1)",
+                "w": 469,
+                "h": 344
             }
-        })
+        }
     ];
 
     private selected?: E.IAnyShape = undefined;
