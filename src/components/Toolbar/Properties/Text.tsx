@@ -1,4 +1,5 @@
 import { Grid, TextField } from "@mui/material"
+import ColorField from "@src/components/General/ColorField";
 import { Editor } from "@src/Editor"
 import React from "react"
 
@@ -22,12 +23,11 @@ export default ({ shape }: { shape: Editor.IShapes["text"] }) => {
 
     return <React.Fragment>
         <Grid item xs={6}>
-            <TextField
-               sx={{width: "100%"}}
-                onChange={ev => updateProperty("fontColor", ev.target.value)}
+            <ColorField
+                onChange={val => updateProperty("fontColor", val)}
                 value={shape.fontColor}
                 label="fontColor"
-                type="color" />
+            />
         </Grid>
         <Grid item xs={6}>
             <TextField
