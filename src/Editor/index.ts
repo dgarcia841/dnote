@@ -23,8 +23,9 @@ export namespace Editor {
             w: number,
             h: number
         },
-        circle: IShape & {
-            r: number
+        ellipse: IShape & {
+            rx: number,
+            ry: number
         }
     }
     /**

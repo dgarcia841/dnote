@@ -25,7 +25,7 @@ export default () => {
             <Grid container spacing={1}>
                 <Basic shape={selected.shape} />
                 {selected.type == "rectangle" ? <Rectangle shape={selected.shape as Editor.IShapes["rectangle"]} /> : null}
-                {selected.type == "circle" ? <Circle shape={selected.shape as Editor.IShapes["circle"]} /> : null}
+                {selected.type == "ellipse" ? <Circle shape={selected.shape as Editor.IShapes["ellipse"]} /> : null}
             </Grid>
         </Box>
     </Box>

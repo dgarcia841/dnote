@@ -1,6 +1,6 @@
 import { Editor } from "@src/Editor";
 import React from "react";
-import { Circle } from "../Shapes/Circle";
+import { Ellipse } from "../Shapes/Circle";
 import { Rectangle } from "../Shapes/Rectangle";
 import BasicShape from "./BasicShape";
 
@@ -24,10 +24,10 @@ export default class Shape extends React.Component<{ shape: Editor.IAnyShape }> 
                 return <BasicShape
                     control={Rectangle}
                     shape={this.shape("rectangle")} />
-            case "circle":
+            case "ellipse":
                 return <BasicShape
-                    control={Circle}
-                    shape={this.shape("circle")} />
+                    control={Ellipse}
+                    shape={this.shape("ellipse")} />
             default:
                 return <div>no shape</div>;
         }

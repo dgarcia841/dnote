@@ -3,37 +3,41 @@ import ShapeWrapper from "@src/Editor/ShapeWrapper";
 /**
  * Renderer de un círculo
  */
-export const  Circle: Editor.IShapeRenderer<Editor.IShapes["circle"]> = (shape, two) => {
-    two.width = shape.r * 2 + 2;
-    two.height = shape.r * 2 + 2;
-    const c = ShapeWrapper(two.makeCircle(shape.r + 1, shape.r + 1, shape.r));
+export const Ellipse: Editor.IShapeRenderer<Editor.IShapes["ellipse"]> = (shape, two) => {
+    two.width = shape.rx * 2 + 2;
+    two.height = shape.ry * 2 + 2;
+    const c = ShapeWrapper(two.makeEllipse(shape.rx + 1, shape.ry + 1, shape.rx, shape.ry));
     c.stroke = shape.stroke;
     c.fill = shape.fill;
     two.update();
 
-    const [xx, yy] = [shape.x - shape.r, shape.y - shape.r];
-    const rr = shape.r;
+    const [xx, yy] = [shape.x - shape.rx, shape.y - shape.ry];
+    const [rx, ry] = [shape.rx, shape.ry];
 
     return {
-        x: shape.x - shape.r,
-        y: shape.y - shape.r,
+        x: shape.x - shape.rx,
+        y: shape.y - shape.ry,
         shape: c,
         onMouseMoving: () => {
             const [mouseX, mouseY] = Editor.get().getMouse();
 
 
-            const distance = Math.max(0, Math.round(Math.min(mouseX - xx, mouseY - yy) / 2));
-            shape.r = distance;
-            c.radius = shape.r;
-            c.position.x = shape.r + 1;
-            c.position.y = shape.r + 1;
-            two.width = shape.r * 2 + 2;
-            two.height = shape.r * 2 + 2;
+            const dx = Math.max(0, Math.round((mouseX - xx) / 2));
+            const dy = Math.max(0, Math.round((mouseY - yy) / 2));
+
+            shape.rx = dx;
+            shape.ry = dy;
+            c.width = dx * 2;
+            c.height = dy * 2;
+            c.position.x = shape.rx + 1;
+            c.position.y = shape.ry + 1;
+            two.width = shape.rx * 2 + 2;
+            two.height = shape.ry * 2 + 2;
             two.update();
         },
         afterMouseMoving: () => {
-            shape.x -= rr - shape.r;
-            shape.y -= rr - shape.r;
+            shape.x -= rx - shape.rx;
+            shape.y -= ry - shape.ry;
         }
     }
 }

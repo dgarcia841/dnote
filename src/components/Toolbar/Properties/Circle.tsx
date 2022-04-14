@@ -2,12 +2,13 @@ import { Grid, TextField } from "@mui/material"
 import { Editor } from "@src/Editor"
 import React from "react"
 
-export default ({ shape }: { shape: Editor.IShapes["circle"] }) => {
+export default ({ shape }: { shape: Editor.IShapes["ellipse"] }) => {
 
-    function updateProperty(prop: keyof Editor.IShapes["circle"], value: string) {
+    function updateProperty(prop: keyof Editor.IShapes["ellipse"], value: string) {
 
         switch (prop) {
-            case "r":
+            case "rx":
+            case "ry":
                 let num = parseInt(value);
                 num = num > 0 ? num : 0;
                 shape[prop] = num;
@@ -19,9 +20,16 @@ export default ({ shape }: { shape: Editor.IShapes["circle"] }) => {
     return <React.Fragment>
         <Grid item xs={6}>
             <TextField
-                onChange={ev => updateProperty("r", ev.target.value)}
-                value={shape.r}
-                label="r"
+                onChange={ev => updateProperty("rx", ev.target.value)}
+                value={shape.rx}
+                label="rx"
+                type="number" />
+        </Grid>
+        <Grid item xs={6}>
+            <TextField
+                onChange={ev => updateProperty("ry", ev.target.value)}
+                value={shape.ry}
+                label="ry"
                 type="number" />
         </Grid>
     </React.Fragment>

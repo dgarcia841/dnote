@@ -37,13 +37,14 @@ export class Editor {
             }
         }),
         ShapeCreate({
-            type: "circle",
+            type: "ellipse",
             shape: {
                 x: 64,
                 y: 64,
                 stroke: "#0000FF",
                 fill: "#EEEEFF",
-                r: 64,
+                rx: 64,
+                ry: 64
             }
         })
     ];
