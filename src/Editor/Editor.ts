@@ -46,6 +46,19 @@ export class Editor {
                 rx: 64,
                 ry: 64
             }
+        }),
+        ShapeCreate({
+            type: "text",
+            shape: {
+                x: 256,
+                y: 64,
+                stroke: "#FF00FF",
+                fill: "#00ff00",
+                w: 128,
+                fontSize: 13,
+                fontColor: "black",
+                text: "hola probando sonido uwu ".repeat(32)
+            }
         })
     ];
 

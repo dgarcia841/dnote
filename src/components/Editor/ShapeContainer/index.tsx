@@ -19,10 +19,11 @@ export default (props: IProps) => {
 
     useMemo(() => {
         if (selectedRef.current && props.selected && props.element) {
+            const div = props.element;
             const sel = selectedRef.current;
-            const svg = props.element.getElementsByTagName("svg")[0];
+            const svg = div.getElementsByTagName("svg")[0];
             const update = function update() {
-                const rect = svg.getBoundingClientRect();
+                const rect = svg ? svg.getBoundingClientRect() : div.getBoundingClientRect();
                 sel.style.left = rect.left + "px";
                 sel.style.top = rect.top + "px";
                 sel.style.width = rect.width + "px";
@@ -32,8 +33,9 @@ export default (props: IProps) => {
                 update();
             });
 
-            obs.observe(svg, { attributes: true });
-            obs.observe(props.element, { attributes: true });
+            if(svg)
+                obs.observe(svg, { attributes: true });
+            obs.observe(div, { attributes: true });
         }
     }, [props]);
 

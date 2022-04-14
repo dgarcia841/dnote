@@ -4,6 +4,7 @@ import React from "react";
 import Basic from "./Basic";
 import Circle from "./Circle";
 import Rectangle from "./Rectangle";
+import Text from "./Text";
 
 export default () => {
 
@@ -26,6 +27,7 @@ export default () => {
                 <Basic shape={selected.shape} />
                 {selected.type == "rectangle" ? <Rectangle shape={selected.shape as Editor.IShapes["rectangle"]} /> : null}
                 {selected.type == "ellipse" ? <Circle shape={selected.shape as Editor.IShapes["ellipse"]} /> : null}
+                {selected.type == "text" ? <Text shape={selected.shape as Editor.IShapes["text"]} /> : null}
             </Grid>
         </Box>
     </Box>

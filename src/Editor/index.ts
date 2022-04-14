@@ -26,6 +26,12 @@ export namespace Editor {
         ellipse: IShape & {
             rx: number,
             ry: number
+        },
+        text: IShape & {
+            w: number,
+            fontSize: number,
+            fontColor: string,
+            text: string
         }
     }
     /**
@@ -53,10 +59,10 @@ export namespace Editor {
     /**
      * Función que renderiza una figura
      */
-    export type IShapeRenderer<S extends Editor.IShape> = (shape: S, two: Two, update: () => void) => {
+    export type IShapeRenderer<S extends Editor.IShape> = (shape: S, two: Two, div: HTMLDivElement) => {
         x: number,
         y: number,
-        shape: IWrappedShape<Shape>,
+        shape?: IWrappedShape<Shape>,
         onMouseMoving?: () => void,
         afterMouseMoving?: () => void
     };

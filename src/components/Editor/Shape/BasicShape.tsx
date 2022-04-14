@@ -1,6 +1,6 @@
 import { Editor } from "@src/Editor";
 import useTwo from "@src/Editor/useTwo";
-import React, { useEffect, useMemo, useReducer, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import ShapeContainer from "../ShapeContainer"
 
 /**
@@ -23,7 +23,6 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
          */
         const Component = ({ shape, control }: typeof this.props) => {
 
-            const [__, update] = useReducer(x => (x + 1) % 7, 0);
             const ref = useRef<HTMLDivElement>(null);
             const two = useTwo(ref);
 
@@ -70,7 +69,7 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
             useEffect(() => {
                 if (!two || !ref.current) return;
                 const div = ref.current;
-                const { x, y, shape: s, onMouseMoving, afterMouseMoving } = control(shape, two, update);
+                const { x, y, shape: s, onMouseMoving, afterMouseMoving } = control(shape, two, div);
                 setX(x); setY(y);
 
                 if (onMouseMoving)
@@ -86,7 +85,12 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
                     });
 
                 // Una vez renderizado el SVG, añadir evento click para iniciar arrastre
-                s._renderer.elem.onmousedown = () => {
+                let El: SVGElement | HTMLElement | undefined;
+                if (s)
+                    El = s._renderer.elem;
+                else El = div;
+
+                El.onmousedown = () => {
                     const box = div.getBoundingClientRect();
                     const [mouseX, mouseY] = Editor.get().getMouse()
                     setBoxOffset([
@@ -108,7 +112,7 @@ export default class BasicShape<S extends Editor.IShape> extends React.Component
                     }
                 });
 
-            }, [two, shape, __, moving]);
+            }, [two, shape, moving]);
 
             useEffect(() => {
 
