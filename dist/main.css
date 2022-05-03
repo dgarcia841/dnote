@@ -1,0 +1,41 @@
+.DS1t9T7ChSqpCcPpucYA p, .DS1t9T7ChSqpCcPpucYA h1, .DS1t9T7ChSqpCcPpucYA h2, .DS1t9T7ChSqpCcPpucYA h3, .DS1t9T7ChSqpCcPpucYA h4, .DS1t9T7ChSqpCcPpucYA h5, .DS1t9T7ChSqpCcPpucYA h6 {
+    margin: 0;
+    padding: 0;
+}
+.cVDQl3fYCAl6X0W6qkXT {
+    position: absolute;
+    pointer-events: none;
+}
+.cVDQl3fYCAl6X0W6qkXT path {
+    pointer-events: auto;
+}
+.DBweMrkyEhKaRVXQhD2V {
+    z-index: 1000;
+    background: linear-gradient(90deg, black 50%, transparent 50%), 
+                linear-gradient(90deg, black 50%, transparent 50%), 
+                linear-gradient(0deg, black 50%, transparent 50%), 
+                linear-gradient(0deg, black 50%, transparent 50%);
+    background-repeat: repeat-x, repeat-x, repeat-y, repeat-y;
+    background-size: 16px 4px, 16px 4px, 4px 16px, 4px 16px;
+    background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0px;
+    border-radius: 5px;
+    box-sizing: content-box;
+    animation: JPmKtfgQKClIKurQ6LSJ 5s linear infinite;
+}
+@keyframes JPmKtfgQKClIKurQ6LSJ {
+    to {
+        background-position: 100% 0%, 0% 100%, 0% 0%, 100% 100%;
+    }
+}
+body {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAGUExURURDRDIyMjjDKEkAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAAWSURBVCjPY4ABQSgY6QKj4YAkwMAAABMuEQGyqLGRAAAAAElFTkSuQmCC);
+    background-repeat: repeat;
+    background-position: center;
+    background-size: inherit;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
