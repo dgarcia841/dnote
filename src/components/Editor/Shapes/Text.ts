@@ -12,7 +12,7 @@ md.disable("image");
 export const Text: Editor.IShapeRenderer<Editor.IShapes["text"]> = (shape, _, div) => {
 
     div.className = classNames(style.Text, div.className);
-    div.innerHTML = md.render(shape.text);
+    div.innerHTML = "<div style=\"pointer-events: none; user-select: none\">" + md.render(shape.text) + "</div>";
     div.style.backgroundColor = shape.fill;
     div.style.border = "2px solid " + shape.stroke;
     div.style.color = shape.fontColor;
