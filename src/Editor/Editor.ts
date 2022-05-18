@@ -243,4 +243,51 @@ export class Editor {
             callback
         });
     }
+
+    public insert(type: E.IShapeTypes) {
+
+        const basic = {
+            x: Math.round(window.innerWidth / 2),
+            y: Math.round(window.innerHeight / 2),
+            stroke: "#000000",
+            fill: "#FFFFFF",
+        }
+        switch(type) {
+            case "rectangle":
+                this.shapes.splice(0, 0, {
+                    type,
+                    shape: {
+                        ...basic,
+                        w: 64,
+                        h: 64
+                    }
+                });
+                break;
+            case "ellipse":
+                this.shapes.splice(0, 0, {
+                    type,
+                    shape: {
+                        ...basic,
+                        rx: 32,
+                        ry: 32
+                    }
+                });
+                break;
+            
+            case "text":
+                this.shapes.splice(0, 0, {
+                    type,
+                    shape: {
+                        ...basic,
+                        w: 64,
+                        fontSize: 12,
+                        fontColor: "#000000",
+                        text: "sample text",
+                        textAlign: "left"
+                    }
+                });
+                break;
+        }
+        this.update();
+    }
 }
