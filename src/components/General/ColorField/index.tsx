@@ -1,12 +1,19 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material"
 import React, { useEffect, useState } from "react"
 import { ChromePicker } from "react-color";
-import parse from 'parse-css-color'
+
 
 interface IProps {
     value: string,
     label?: string,
     onChange?: (newValue: string) => void
+}
+
+function parse(rgba: string): {values: number[], alpha: number} {
+    rgba = rgba.replace(/[^0-9.,]/ig, "");
+    const values = rgba.split(',').map(x => parseFloat(x));
+    const alpha = values.pop() ?? 1;
+    return {alpha, values};
 }
 
 
@@ -19,7 +26,7 @@ export default ({value, label, onChange}: IProps) => {
     useEffect(() => {
         setColor(value);
 
-        const rgba = parse(color);
+        const rgba = parse(value);
         const [r, g, b] = rgba?.values ?? [0, 0, 0];
         const a = rgba?.alpha ?? 0;
 
@@ -34,7 +41,6 @@ export default ({value, label, onChange}: IProps) => {
         }
         const hex = fill(RR.toString(16)) + fill(GG.toString(16)) + fill(BB.toString(16));
         setHex("#" + hex);
-        setHex;
     }, [value]);
 
     return <React.Fragment>

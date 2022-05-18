@@ -20,6 +20,11 @@ export class Editor {
         return this.editor;
     }
 
+    public load(shapes: E.IAnyShape[]) {
+        this.shapes = shapes;
+        this.update();
+    }
+
     /**
      * Lista de figuras en el espacio de trabajo
      */
@@ -33,7 +38,7 @@ export class Editor {
                 "fill": "rgba(255, 255, 255, 0.3)",
                 "w": 398,
                 "fontSize": 13,
-                "fontColor": "black",
+                "fontColor": "rgba(0, 0, 0, 1)",
                 "textAlign": "justify",
                 "text": "## Texto de ejemplo\nLorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed aliquam tellus. Duis quis sodales eros. Sed elementum tellus id augue dignissim viverra. Vestibulum eget augue bibendum, laoreet augue ac, consectetur nisi. In tempus, quam in dictum scelerisque, massa massa volutpat dolor, vitae cursus ligula mauris at felis. Suspendisse fermentum quis lectus a vestibulum. Integer sagittis vitae quam vel pretium. Vivamus magna lectus, porta id cursus nec, laoreet vestibulum enim. Donec suscipit leo et tellus vestibulum, sit amet accumsan est scelerisque. Maecenas interdum elementum pharetra. Aenean ultrices eget enim non facilisis. Pellentesque porta dictum orci a commodo. Mauris tincidunt ornare blandit. Ut nec metus pharetra, placerat metus quis, auctor leo. Nulla et cursus sapien. Aenean nisi dui, accumsan id ultrices sed, dictum et augue."
             }
@@ -43,7 +48,7 @@ export class Editor {
             "shape": {
                 "x": 932,
                 "y": 441,
-                "stroke": "#0000FF",
+                "stroke": "rgba(0, 0, 0, 255, 1)",
                 "fill": "rgba(53, 154, 215, 1)",
                 "rx": 86,
                 "ry": 87
