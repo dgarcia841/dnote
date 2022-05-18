@@ -3,6 +3,7 @@ import { Editor } from "@src/Editor";
 import React, { useReducer } from "react"
 import Toolbar from "../Toolbar";
 import Shape from "./Shape";
+import Shapebar from "../Shapebar";
 
 const editor = Editor.get();
 
@@ -11,6 +12,7 @@ export default () => {
     editor.setUpdater(update);
 
     return <React.Fragment>
+        <Shapebar />
         <Box
             position="absolute"
             width="100%"
