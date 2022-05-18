@@ -24,7 +24,11 @@ const actions = [
 export default () => {
     return <SpeedDial
         ariaLabel="Menú de acciones"
-        sx={{ position: 'absolute', bottom: 16, left: 16 }}
+        sx={{ 
+            position: 'absolute', 
+            bottom: 16, left: 16,
+            zIndex: theme => theme.zIndex.drawer + 1
+        }}
         icon={<SpeedDialIcon />}
     >
         {actions.map((action) => (
