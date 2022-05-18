@@ -38,7 +38,7 @@ export default () => {
         <Divider />
 
         <Box m={1}>
-            <List>
+            <List disablePadding={true}>
                 {Editor.get().getShapes().map((shape, i) => <ShapeIndex key={i} shape={shape} />)}
             </List>
         </Box>
