@@ -84,12 +84,11 @@ export class Editor {
     }[] = [];
 
     protected constructor() { 
-        window.addEventListener("mousemove", ev => {
-            this.mouse = [
-                ev.clientX,
-                ev.clientY
-            ];
-        });
+        const ev = (ev: MouseEvent) => this.mouse = [
+            ev.clientX,
+            ev.clientY
+        ];
+        window.addEventListener("mousemove", ev);
     };
     
     /**
@@ -244,11 +243,11 @@ export class Editor {
         });
     }
 
-    public insert(type: E.IShapeTypes) {
-
+    public insert(type: E.IShapeTypes, x?: number, y?: number) {
+        console.log({x, y});
         const basic = {
-            x: Math.round(window.innerWidth / 2),
-            y: Math.round(window.innerHeight / 2),
+            x: x ?? Math.round(window.innerWidth / 2),
+            y: y ?? Math.round(window.innerHeight / 2),
             stroke: "#000000",
             fill: "#FFFFFF",
         }
