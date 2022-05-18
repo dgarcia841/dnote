@@ -20,7 +20,9 @@ export default function Shapebar() {
         <Box height="100%">
             <List disablePadding>
                 {shapes.map(s => <ListItemButton onClick={() => Editor.get().insert(s.type)}>
-                    {s.type}
+                    <Box display="flex" width="100%" justifyContent="center">
+                        <img src={s.img} />
+                    </Box>
                 </ListItemButton>
                 )}
             </List>

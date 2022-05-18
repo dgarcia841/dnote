@@ -1,4 +1,7 @@
 import { Editor } from "@src/Editor";
+import rectangle from "@assets/rectangle.svg";
+import ellipse from "@assets/ellipse.svg";
+import text from "@assets/text.svg";
 
 const shapes: {
     img: string,
@@ -6,15 +9,15 @@ const shapes: {
 }[] = [
     {
         type: "rectangle",
-        img: "#"
+        img: String(rectangle)
     },
     {
         type: "ellipse",
-        img: "#"
+        img: String(ellipse)
     },
     {
         type: "text",
-        img: "#"
+        img: String(text)
     }
 ];
 
