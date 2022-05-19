@@ -11,28 +11,40 @@ import List from "@mui/material/List";
 import IconButton from "@mui/material/IconButton";
 import { ListItemText } from "@mui/material";
 import { loadFile } from "@src/functions/loadFile";
+import { useNavigate, NavigateFunction } from "react-router-dom";
+import FileOpenIcon from '@mui/icons-material/FileOpen';
 
-const actions = [
+const getActions = (navigate: NavigateFunction) => [
     {
-        icon: <UploadIcon />, 
-        name: 'Cargar proyecto',
+        icon: <FileOpenIcon />,
+        name: "Abrir proyectos",
+        async action() {
+            navigate("/");            
+        }
+    },
+    {
+        icon: <UploadIcon />,
+        name: "Cargar proyecto",
         async action() {
             const file = await loadFile(".json");
-            if(!file) return;
+            if (!file) return;
             Editor.get().load(JSON.parse(file));
         }
     },
     {
-        icon: <FileDownloadIcon />, name: 'Descargar proyecto',
+        icon: <FileDownloadIcon />,
+        name: "Descargar proyecto",
         action() {
             downloadFile("figure.json", JSON.stringify(Editor.get().getShapes()))
         }
     },
 ];
-actions;
 
 export default () => {
     const [button, setButton] = useState<HTMLElement | undefined>(undefined);
+
+    const navigate = useNavigate();
+
     return <>
         <SpeedDial
             ariaLabel="Menú de acciones"
@@ -47,7 +59,7 @@ export default () => {
         />
         <Menu open={!!button} anchorEl={button} onClose={() => setButton(undefined)}>
             <List disablePadding>
-                {actions.map(({ icon, action, name }) => <ListItemButton onClick={action}>
+                {getActions(navigate).map(({ icon, action, name }, i) => <ListItemButton key={i} onClick={action}>
                     <IconButton>
                         {icon}
                     </IconButton>

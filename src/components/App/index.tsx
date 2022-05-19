@@ -1,9 +1,9 @@
 import { ThemeProvider } from "@emotion/react";
 import { createTheme, CssBaseline } from "@mui/material"
 import React from "react"
-import DropMenu from "../DropMenu";
 import Editor from "../Editor"
 import "./style.module.css";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 export default () => {
 
@@ -16,7 +16,11 @@ export default () => {
 
     return <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Editor />
-        <DropMenu />
+        <HashRouter>
+            <Routes>
+                <Route path="/" element={<div>homepage</div>} />
+                <Route path="/editor" element={<Editor />} />
+            </Routes>
+        </HashRouter>
     </ThemeProvider>
 }
