@@ -13,13 +13,29 @@ import { ListItemText } from "@mui/material";
 import { loadFile } from "@src/functions/loadFile";
 import { useNavigate, NavigateFunction } from "react-router-dom";
 import FileOpenIcon from '@mui/icons-material/FileOpen';
+import SaveIcon from '@mui/icons-material/Save';
+import PromptDialog from "@src/dialog/PromptDialog";
+import { Storage } from "@src/storage/Storage";
 
 const getActions = (navigate: NavigateFunction) => [
     {
         icon: <FileOpenIcon />,
-        name: "Abrir proyectos",
+        name: "Abrir proyecto",
         async action() {
             navigate("/");            
+        }
+    },
+    {
+        icon: <SaveIcon />,
+        name: "Guardar proyecto",
+        async action() {
+            const title = await PromptDialog({
+                confirmation: "Título del proyecto"
+            });
+            Storage.save({
+                title,
+                shapes: Editor.get().getShapes()
+            });
         }
     },
     {
