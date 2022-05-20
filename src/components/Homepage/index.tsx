@@ -13,7 +13,7 @@ export function Homepage() {
             <Grid item md={3} sm={6} xs={12}>
                 <AddProject />
             </Grid>
-            {projects.map(proj => <Grid item md={3} sm={6} xs={12}>
+            {projects.map((proj, i) => <Grid key={i} item md={3} sm={6} xs={12}>
                 {proj.title}
             </Grid>)}
         </Grid>
