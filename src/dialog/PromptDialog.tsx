@@ -16,7 +16,7 @@ const PromptDialog: React.FC<ReactConfirmProps> = ({show, proceed, confirmation}
             {confirmation}
         </DialogTitle>
         <DialogContent>
-            <TextField fullWidth value={text} onChange={ev => setText(ev.target.value)} />
+            <TextField autoFocus fullWidth value={text} onChange={ev => setText(ev.target.value)} />
         </DialogContent>
         <DialogActions>
             <Button variant="contained" onClick={() => proceed(text)}>Aceptar</Button>
