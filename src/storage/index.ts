@@ -1,5 +1,9 @@
 import { Editor } from "@src/Editor";
 
+export type IReadonly<Obj extends {}> = {
+    readonly [Key in keyof Obj]: Key extends {} ? IReadonly<Obj[Key]>: Obj[Key]
+};
+
 export namespace Storage {
     export interface IProject {
         title: string,
@@ -7,6 +11,13 @@ export namespace Storage {
     }
 
     const projects: IProject[] = [];
+
+    /**
+     * Gets the projects in the storage
+     */
+    export function getList(): IReadonly<IProject>[] {
+        return projects;
+    }
 
     /**
      * Loads the projects from local

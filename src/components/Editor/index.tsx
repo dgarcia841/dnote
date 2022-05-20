@@ -6,6 +6,9 @@ import Shape from "./Shape";
 import Shapebar from "../Shapebar";
 import DropMenu from "../DropMenu";
 
+// @ts-nocheck
+import style from "./style.module.css";
+
 const editor = Editor.get();
 
 export default () => {
@@ -16,6 +19,7 @@ export default () => {
         <Shapebar />
         <Box
             position="absolute"
+            className={style.editor}
             width="100%"
             height="100%" onClick={() => {
                 Editor.get().unselect();

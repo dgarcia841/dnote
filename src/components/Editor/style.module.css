@@ -1,4 +1,4 @@
-body {
+.editor {
     background-image: url(@assets/transparency-dark.png);
     background-repeat: repeat;
     background-position: center;
