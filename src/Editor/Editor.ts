@@ -211,9 +211,7 @@ export class Editor {
      * @param updater Función actualizadora
      */
     public setUpdater(updater: () => void) {
-        if (!this.updater) {
-            this.updater = updater;
-        }
+        this.updater = updater;
     }
 
 
