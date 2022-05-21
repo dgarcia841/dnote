@@ -24,7 +24,7 @@ export default function ProjectIndex({ project }: { project: Storage.IProject })
     return <Card>
         <CardHeader
             sx={{ backgroundColor: "primary.main" }}
-            title={project.title} 
+            title={project.title.substring(0, 16) + (project.title.length > 16 ? "...": null)} 
             action={
                 <IconButton>
                     <DeleteIcon />
