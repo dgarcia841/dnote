@@ -10,8 +10,12 @@ import Skeleton from "@mui/material/Skeleton";
 import CardActions from "@mui/material/CardActions";
 import Button from "@mui/material/Button";
 import { Editor } from "@src/Editor";
+import ConfirmDialog from "@src/dialog/ConfirmDialog";
 
-export default function ProjectIndex({ project }: { project: Storage.IProject }) {
+export default function ProjectIndex({ project, onRemove }: { 
+    project: Storage.IProject ,
+    onRemove?: () => void
+}) {
     const navigate = useNavigate();
 
 
@@ -20,13 +24,23 @@ export default function ProjectIndex({ project }: { project: Storage.IProject })
         navigate("/editor");
     }
 
+    async function remove() {
+        const confirm = await ConfirmDialog({
+            confirmation: "¿Está seguro de que desea eliminar este proyecto'"
+        });
+        if(!confirm) return;
+
+        Storage.remove(project.title);
+        onRemove?.();
+    }
+
 
     return <Card>
         <CardHeader
             sx={{ backgroundColor: "primary.main" }}
             title={project.title.substring(0, 16) + (project.title.length > 16 ? "...": '')} 
             action={
-                <IconButton>
+                <IconButton onClick={remove}>
                     <DeleteIcon />
                 </IconButton>
             }

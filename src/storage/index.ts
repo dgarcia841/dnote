@@ -52,4 +52,20 @@ export namespace Storage {
         }
         return true;
     }
+
+    /**
+     * Removes a project
+     * @param title Project title
+     */
+    export function remove(title: string) {
+        const filtered = projects.filter(p => p.title !== title);
+        projects.splice(0, projects.length, ...filtered);
+        try {
+            localStorage.setItem("projects", JSON.stringify(filtered));
+        }
+        catch(e) {
+            console.error(e);
+        }
+        return true;
+    }
 }
