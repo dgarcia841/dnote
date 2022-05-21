@@ -15,8 +15,8 @@ export namespace Storage {
     /**
      * Gets the projects in the storage
      */
-    export function getList(): IReadonly<IProject>[] {
-        return projects;
+    export function getList(): IProject[] {
+        return projects.map((_, i) => projects[projects.length - 1 - i]);
     }
 
     /**
